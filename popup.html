@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FocusFrame</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="popup.js"></script>
 </head>
 <body>
   <div class="popup-container">
@@ -16,10 +17,20 @@
       <input type="checkbox" id="toggleAnimations">
       Disable Animations
     </label>
+    <button id="summarizeButton">Summarize Site</button>
+    <textarea id="summaryTextarea" rows="5" cols="40" readonly></textarea> <!-- Textarea for displaying summary -->
+    
+    <!-- Feedback Buttons -->
+    <div id="feedbackButtons">
+      <button id="thumbsUpButton">👍</button>
+      <button id="thumbsDownButton">👎</button>
+    </div>
+    
+    <!-- Feedback Text Box (Hidden by Default) -->
+    <div id="feedbackTextBox" style="display: none;">
+      <textarea id="feedbackText" rows="5" cols="40" placeholder="Enter your feedback here..."></textarea>
+      <button id="submitFeedbackButton">Submit</button>
+    </div>
   </div>
 </body>
 </html>
-
-
-
-

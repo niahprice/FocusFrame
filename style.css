@@ -1,36 +1,43 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .popup-container {
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
-    padding: 20px;
-    width: 250px; /* Adjust the width as needed */
-  }
-  
-  h1 {
-    color: #333;
-    margin-top: 0; /* Remove default margin */
-    margin-bottom: 10px; /* Add margin below the title */
-  }
-  
-  .logo {
-    width: 24px; /* Adjust the width to fit appropriately */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 8px; /* Add some spacing between the logo and text */
-    margin-bottom: -5px; /* Adjust alignment with title */
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.popup-container {
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 20px;
+  width: 300px; /* Adjust the width as needed */
+}
+
+h1 {
+  color: #333;
+  margin-top: 0; /* Remove default margin */
+  margin-bottom: 10px; /* Add margin below the title */
+}
+
+.logo {
+  width: 24px; /* Adjust the width to fit appropriately */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 8px; /* Add some spacing between the logo and text */
+  margin-bottom: -5px; /* Adjust alignment with title */
+}
+
+#summaryTextarea,
+#feedbackText {
+  width: calc(100% - 40px); /* Take up full width of container with padding */
+  margin-bottom: 10px; /* Add margin below the textarea */
+  resize: none; /* Prevent user from resizing the textarea */
+  overflow: auto; /* Enable scrolling if content exceeds the textarea height */
+}
