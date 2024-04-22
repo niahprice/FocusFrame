@@ -1,15 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Summarize site
-  document.getElementById('summarizeButton').addEventListener('click', function() {
-    // Get the current tab URL
+  //Disable Animations (GIFs)
+  const toggleCheckbox = document.getElementById('toggleGIFRemoval');
+
+  // Retrieve and set the initial state of the checkbox from localStorage
+  const removeGIFs = JSON.parse(localStorage.getItem('removeGIFs'));
+  toggleCheckbox.checked = removeGIFs || false;
+
+  toggleCheckbox.addEventListener('change', function() {
+    const removeGIFs = toggleCheckbox.checked;
+
+    // Save the checkbox state to localStorage
+    localStorage.setItem('removeGIFs', JSON.stringify(removeGIFs));
+
+    // Send message to content script to toggle GIF removal
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-      var currentTab = tabs[0];
-      var url = currentTab.url;
-      // Send message to content script to summarize the site
-      chrome.tabs.sendMessage(currentTab.id, { summarizeSite: true });
+      const tab = tabs[0];
+      chrome.tabs.sendMessage(tab.id, { action: 'toggleGIFRemoval', removeGIFs });
     });
   });
 
+  // Summarize site goes here
+ 
   // Feedback buttons
   document.getElementById('thumbsDownButton').addEventListener('click', function() {
     document.getElementById('feedbackTextBox').style.display = 'block';
@@ -20,12 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Send feedback to developers
     console.log('Feedback:', feedbackText);
     // Optionally, send feedback to server or other platform
-  });
-});
 
-// Listen for messages from the content script
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  if (message.summary) {
-    document.getElementById('summaryTextarea').value = message.summary;
-  }
+    // Close the feedback text box
+    document.getElementById('feedbackTextBox').style.display = 'none';
+
+    // Display thank you message
+    var thankYouMessage = document.createElement('div');
+    thankYouMessage.id = 'thankYouMessage'; // Assign an ID for styling
+    thankYouMessage.textContent = 'Thank you for your Feedback!';
+    document.body.appendChild(thankYouMessage);
+
+    // Remove the thank you message after 3 seconds
+    setTimeout(function() {
+      thankYouMessage.remove();
+    }, 3000);
+  });
 });
