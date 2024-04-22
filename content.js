@@ -2,7 +2,7 @@ let removeGIFs = false; // Variable to store the state of GIF removal
 
 // Function to remove GIF images
 function removeGIFImages() {
-  const gifs = document.querySelectorAll('img[src$="-gif"]');
+  const gifs = document.querySelectorAll('img[src$=".gif"]');
   gifs.forEach(gif => {
     gif.remove();
   });
